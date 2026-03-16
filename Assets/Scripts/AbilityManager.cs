@@ -13,6 +13,9 @@ public class AbilityManager : MonoBehaviour
     [Header("Unlocks")]
     public bool canDash = false;
     public bool canGlide = false;
+    public bool canDoubleJump = false;
+
+    private int jumpsRemaining;
 
     [Header("Dash Settings")]
     public float dashForce = 20f;
@@ -57,16 +60,31 @@ public class AbilityManager : MonoBehaviour
 
     void Update()
     {
-        // --- RESET LOGIC ---
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R)) ResetWorld();
+
+        // FIXED: Only reset jumps if grounded AND moving downward or still (not jumping up)
+        if (movement.isGrounded && rb.linearVelocity.y <= 0.1f)
         {
-            ResetWorld();
+            jumpsRemaining = canDoubleJump ? 2 : 1;
         }
 
         if (!isDashing)
         {
             HandleDash();
             HandleGlide();
+            HandleJump();
+        }
+    }
+
+    void HandleJump()
+    {
+        if ((Input.GetKeyDown(KeyCode.W) || Input.GetButtonDown("Jump")) && jumpsRemaining > 0)
+        {
+            // We subtract the jump immediately so the reset check above doesn't catch it
+            jumpsRemaining--; 
+            
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, movement.jumpForce);
+            anim.SetTrigger("isJumping");
         }
     }
 
@@ -112,12 +130,21 @@ public class AbilityManager : MonoBehaviour
 
     void ApplyDebuffEffects()
     {
+        // 1. Permanent Speed Reduction (Stacks additively)
         movement.speed = baseSpeed * Mathf.Max(0.1f, 1f - (slowStackCount * 0.2f));
-        rb.gravityScale = originalGravity * (1f + (gravityStackCount * 0.5f));
-        movement.jumpForce = baseJump * Mathf.Max(0.1f, 1f - (jumpStackCount * 0.15f));
 
+        // 2. Permanent Gravity Increase
+        rb.gravityScale = originalGravity * (1f + (gravityStackCount * 0.5f));
+
+        // 3. UPDATED: Jump Reduction is now only 10% (0.1f) per stack
+        float jumpPenalty = jumpStackCount * 0.10f; 
+        movement.jumpForce = baseJump * Mathf.Max(0.1f, 1f - jumpPenalty);
+
+        // Visual Feedback
         if (slowStackCount + gravityStackCount + jumpStackCount > 0)
             sr.color = new Color(0.75f, 0.75f, 0.75f);
+        else
+            sr.color = Color.white;
     }
 
     void ShowPopup(string message)

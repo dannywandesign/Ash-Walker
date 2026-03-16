@@ -22,6 +22,17 @@ public class ShopLogic : MonoBehaviour
         }
     }
 
+    public void BuyDoubleJump()
+    {
+        // UPDATED: Price changed from 25 to 20 shards
+        if (ShardManager.instance.shardCount >= 20)
+        {
+            ShardManager.instance.RemoveShards(20);
+            AbilityManager.instance.canDoubleJump = true;
+            CloseShop();
+        }
+    }
+
     public void GrowUp()
     {
         int randomShards = Random.Range(5, 11);

@@ -19,8 +19,8 @@ public class PlayerMovement : MonoBehaviour
     public GameObject attackHitbox; 
     public AttackHitbox hitboxScript; 
 
-    private float horizontal;
-    private bool isGrounded;
+    [HideInInspector] public float horizontal; // Made public so AbilityManager can see direction
+    public bool isGrounded; // CHANGED TO PUBLIC TO FIX ERROR
     private bool isAttacking;
     private Vector3 originalScale;
 
@@ -31,30 +31,18 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        // 1. Ground and Input Checks
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, groundLayer);
         horizontal = Input.GetAxisRaw("Horizontal");
 
-        // 2. DASH OVERRIDE: Stop regular movement logic if dashing
-        if (AbilityManager.instance != null && AbilityManager.instance.isDashing)
-        {
-            return; // Skip the rest of Update while the dash burst is active
-        }
+        if (AbilityManager.instance != null && AbilityManager.instance.isDashing) return;
 
-        // 3. Jump Logic
-        if (Input.GetButtonDown("Jump") && isGrounded)
-        {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-            anim.SetTrigger("isJumping");
-        }
-
-        // 4. Attack Logic
+        // Attack Logic
         if (Input.GetMouseButtonDown(0) && !isAttacking)
         {
             StartCoroutine(AttackRoutine());
         }
 
-        // 5. Movement Animations and Flipping
+        // Movement Animations and Flipping
         bool isMoving = Mathf.Abs(horizontal) > 0.1f;
         anim.SetBool("isRunning", isMoving);
 
@@ -66,13 +54,8 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        // 6. DASH OVERRIDE: Prevent physics overwrite during dash
-        if (AbilityManager.instance != null && AbilityManager.instance.isDashing)
-        {
-            return; // Allow the dash velocity from AbilityManager to persist
-        }
+        if (AbilityManager.instance != null && AbilityManager.instance.isDashing) return;
 
-        // Regular horizontal movement
         rb.linearVelocity = new Vector2(horizontal * speed, rb.linearVelocity.y);
     }
 
@@ -80,25 +63,11 @@ public class PlayerMovement : MonoBehaviour
     {
         isAttacking = true;
         anim.SetTrigger("Attack");
-        
         attackHitbox.SetActive(true);
-
         yield return new WaitForSeconds(0.3f); 
-        
         if (hitboxScript != null) hitboxScript.CheckForKills();
-
         yield return new WaitForSeconds(attackDuration - 0.3f);
-
         attackHitbox.SetActive(false);
         isAttacking = false;
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        if (groundCheck != null)
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(groundCheck.position, checkRadius);
-        }
     }
 }

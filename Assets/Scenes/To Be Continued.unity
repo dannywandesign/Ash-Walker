@@ -4326,7 +4326,7 @@ MonoBehaviour:
   dashForce: 10
   dashCooldown: 1
   isDashing: 0
-  glideGravity: 0.5
+  glideGravity: 0.3
   popupDisplayTime: 1.5
   popupObject: {fileID: 2058184234}
   popupText: {fileID: 1823338749}
