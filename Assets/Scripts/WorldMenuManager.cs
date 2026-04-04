@@ -8,10 +8,8 @@ public class WorldMenuManager : MonoBehaviour
 
     void Start()
     {
-        // --- ADD THESE TWO LINES ---
         Cursor.visible = true; 
         Cursor.lockState = CursorLockMode.None; 
-        // ---------------------------
 
         RefreshButtons();
     }
@@ -20,7 +18,6 @@ public class WorldMenuManager : MonoBehaviour
     {
         for (int i = 0; i < worldButtons.Length; i++)
         {
-            // We check our static GameSession brain
             bool isUnlocked = GameSession.WorldUnlocked[i];
 
             worldButtons[i].interactable = isUnlocked;
@@ -41,7 +38,6 @@ public class WorldMenuManager : MonoBehaviour
 
     public void GoBackToStart()
     {
-        // No need to Save PlayerPrefs here anymore!
         SceneManager.LoadScene("StartScreen");
     }
 }

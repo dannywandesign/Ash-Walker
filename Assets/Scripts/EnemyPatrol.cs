@@ -5,7 +5,7 @@ public class EnemyPatrol : MonoBehaviour
     [Header("Movement Settings")]
     public float speed = 3f;
     public float jumpForce = 5f;
-    public float hopDelay = 1.5f; // Seconds between hops
+    public float hopDelay = 1.5f; 
     public float patrolDistance = 4f;
 
     [Header("References")]
@@ -25,18 +25,15 @@ public class EnemyPatrol : MonoBehaviour
 
     void Update()
     {
-        // Calculate boundaries
         float rightBound = startPos.x + patrolDistance;
         float leftBound = startPos.x - patrolDistance;
 
-        // Check if it's time to hop
         if (Time.time >= nextHopTime)
         {
             Hop();
             nextHopTime = Time.time + hopDelay;
         }
 
-        // Logic to turn around at boundaries
         if (movingRight && transform.position.x >= rightBound)
         {
             Flip();
@@ -46,7 +43,6 @@ public class EnemyPatrol : MonoBehaviour
             Flip();
         }
 
-        // Handle Animation Transitions based on velocity
         if (rb.linearVelocity.y > 0.1f)
         {
             anim.SetBool("isJumping", true);
@@ -67,7 +63,6 @@ public class EnemyPatrol : MonoBehaviour
     void Hop()
     {
         float direction = movingRight ? 1 : -1;
-        // Apply force up and forward
         rb.linearVelocity = new Vector2(direction * speed, jumpForce);
     }
 

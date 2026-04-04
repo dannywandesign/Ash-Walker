@@ -1,10 +1,10 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement; 
 
 public class AttackHitbox : MonoBehaviour
 {
-    // A list to track enemies currently inside the "swing" zone
     private List<GameObject> enemiesInRange = new List<GameObject>();
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -23,10 +23,17 @@ public class AttackHitbox : MonoBehaviour
         }
     }
 
-    // This is called by the PlayerMovement script after the 1s delay
     public void CheckForKills()
     {
-        Debug.Log("Checking for kills... Items in list: " + enemiesInRange.Count); // ADD THIS
+        if (SceneManager.GetActiveScene().name == "World4")
+        {
+            Debug.Log("Attacks are useless in World4! Enemies are immortal.");
+            enemiesInRange.Clear(); 
+            return; 
+        }
+
+        Debug.Log("Checking for kills... Items in list: " + enemiesInRange.Count); 
+        
         for (int i = enemiesInRange.Count - 1; i >= 0; i--)
         {
             GameObject enemy = enemiesInRange[i];
@@ -38,7 +45,6 @@ public class AttackHitbox : MonoBehaviour
             }
         }
         
-        // Clear the list completely for the next swing
         enemiesInRange.Clear();
     }
 }

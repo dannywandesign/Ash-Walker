@@ -6,7 +6,6 @@ public class Shard : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // Debug to see IF the collision is even happening
         Debug.Log("Shard: Something hit me! It was: " + collision.gameObject.name);
 
         if (collision.CompareTag("Player"))

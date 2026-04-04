@@ -9,7 +9,6 @@ public class GlobalShop : MonoBehaviour
 
     void Start()
     {
-        // AUTO-FIX: If Unity forgot the link, find them by name
         if (shopPanel == null)
         {
             shopPanel = GameObject.Find("ShopPanel");
@@ -20,7 +19,6 @@ public class GlobalShop : MonoBehaviour
             shardText = GameObject.Find("ShardCounterText")?.GetComponent<TextMeshProUGUI>();
         }
 
-        // Ensure shop starts closed
         if (shopPanel != null) shopPanel.SetActive(false);
     }
 

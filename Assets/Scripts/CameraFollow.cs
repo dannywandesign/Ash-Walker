@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    public Transform target; // Drag your Player object here in the Inspector
-    public Vector3 offset = new Vector3(0, 2, -10); // Adjust to position the camera
+    public Transform target; 
+    public Vector3 offset = new Vector3(0, 2, -10); 
 
     void LateUpdate()
     {

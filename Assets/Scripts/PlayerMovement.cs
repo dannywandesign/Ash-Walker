@@ -36,13 +36,11 @@ public class PlayerMovement : MonoBehaviour
 
         if (AbilityManager.instance != null && AbilityManager.instance.isDashing) return;
 
-        // --- UPDATED ATTACK LOGIC (Mouse or F key) ---
         if ((Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.F)) && !isAttacking)
         {
             StartCoroutine(AttackRoutine());
         }
 
-        // Movement Animations and Flipping
         bool isMoving = Mathf.Abs(horizontal) > 0.1f;
         anim.SetBool("isRunning", isMoving);
 

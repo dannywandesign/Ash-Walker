@@ -20,7 +20,6 @@ public partial class ShardManager : MonoBehaviour
         if (shardText == null)
             shardText = GameObject.Find("ShardCounterText")?.GetComponent<TextMeshProUGUI>();
 
-        // Find all objects with the Shard script to set the max goal
         Shard[] allShards = Object.FindObjectsByType<Shard>(FindObjectsSortMode.None);
         totalShardsInLevel = allShards.Length;
 
@@ -43,7 +42,6 @@ public partial class ShardManager : MonoBehaviour
     {
         if (shardText != null)
         {
-            // Now shows "SHARDS: 0/10"
             shardText.text = "SHARDS: " + shardCount + "/" + totalShardsInLevel;
         }
     }
