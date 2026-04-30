@@ -153,7 +153,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -120, y: 191.52454}
+  m_AnchoredPosition: {x: -210, y: 160}
   m_SizeDelta: {x: 344.5792, y: 43.049072}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &42472502
@@ -176,11 +176,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You have lost your shadow during your adventures and you have to venture
-    through tough terrain to get it back. You are just a kid and don't know what
-    it feels to actually grow since no one ever told you to mature. Make it to the
-    end of this adventure and regain your shadow realizing that life is not as easy
-    as you think it is without help.
+  m_text: You are a member of a guild dedicated to the belief that nothing is truly
+    gone if it is remembered by the future generations. While the survivors hide
+    in underground bunkers waiting for the end, you venture out to a gray landscape
+    to find echoes. These echoes are time bubbles of the moments just before the
+    end. You need to piece together the truth of what happened and provide a proper
+    ending to a world that has been cut short from the sun breaking apart.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bfd82da91aedebb40842bba8740d21b6, type: 2}
   m_sharedMaterial: {fileID: 7175211324082872406, guid: bfd82da91aedebb40842bba8740d21b6, type: 2}
@@ -246,7 +247,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -247.10577, w: -357.48904}
+  m_margin: {x: 0, y: 0, z: -437.6107, w: -357.48904}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

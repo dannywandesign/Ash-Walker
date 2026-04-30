@@ -1892,8 +1892,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 231, y: 151}
-  m_SizeDelta: {x: -1340, y: -805}
+  m_AnchoredPosition: {x: 224, y: 144}
+  m_SizeDelta: {x: -1249.0999, y: -1042.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &573196385
 MonoBehaviour:
@@ -2391,7 +2391,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &801926131
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3303,7 +3303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GlobalShop
   shopPanel: {fileID: 801926130}
-  shardText: {fileID: 0}
+  shardText: {fileID: 650600329}
 --- !u!1 &1063005791
 GameObject:
   m_ObjectHideFlags: 0
@@ -3338,8 +3338,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 1, y: 151}
-  m_SizeDelta: {x: -1340, y: -805}
+  m_AnchoredPosition: {x: -7, y: 145}
+  m_SizeDelta: {x: -1071.5499, y: -1042}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1063005793
 MonoBehaviour:
@@ -7251,8 +7251,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -238, y: 152}
-  m_SizeDelta: {x: -1340, y: -805}
+  m_AnchoredPosition: {x: -238, y: 145}
+  m_SizeDelta: {x: -1236.1001, y: -1033.6001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1727836756
 MonoBehaviour:
