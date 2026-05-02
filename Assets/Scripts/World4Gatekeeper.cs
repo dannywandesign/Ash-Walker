@@ -21,7 +21,7 @@ public class World4Gatekeeper : MonoBehaviour
         CheckScrolls();
     }
 
-void CheckScrolls()
+    void CheckScrolls()
     {
         collectedCount = 0;
 
@@ -35,15 +35,14 @@ void CheckScrolls()
 
         if (scrollCountText != null)
         {
-            scrollCountText.text = "Scrolls: " + collectedCount + " / " + totalScrollsNeeded;
+            scrollCountText.text = "SCROLLS: " + collectedCount + " / " + totalScrollsNeeded;
         }
 
-        bool isW4Unlocked = PlayerPrefs.GetInt("World4_Unlocked", 0) == 1;
-
-        if (isW4Unlocked && collectedCount >= totalScrollsNeeded)
+        // JUST check the scrolls! (Removed the isW4Unlocked requirement)
+        if (collectedCount >= totalScrollsNeeded)
         {
             world4Button.interactable = true;
-            scrollCountText.color = Color.green; 
+            scrollCountText.color = Color.green; // Turns green when ready!
         }
         else
         {
