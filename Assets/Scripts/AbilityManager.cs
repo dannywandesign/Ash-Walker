@@ -138,7 +138,7 @@ public class AbilityManager : MonoBehaviour
         if (notificationText != null)
         {
             notificationText.color = Color.red;
-            notificationText.text = "GROWING PAINS...\nYou feel heavy.";
+            notificationText.text = "Taking A Short Break";
         }
 
         yield return new WaitForSeconds(tempDebuffDuration);
@@ -157,7 +157,7 @@ public class AbilityManager : MonoBehaviour
         if (notificationText != null)
         {
             notificationText.color = Color.cyan;
-            string resultMsg = "MATURED!\nStats Permanently Up";
+            string resultMsg = "Stats Permanently Up";
 
             if (!string.IsNullOrEmpty(unlockedAbility))
             {
