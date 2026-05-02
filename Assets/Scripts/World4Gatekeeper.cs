@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 public class World4Gatekeeper : MonoBehaviour
 {
     [Header("Requirement Settings")]
-    public int totalScrollsNeeded = 4; // Total from Tutorial + W1 + W2 + W3
-    public string[] scrollIDs; // List all the IDs you gave your scrolls here
+    public int totalScrollsNeeded = 4;
+    public string[] scrollIDs; 
     
     [Header("UI References")]
     public TextMeshProUGUI scrollCountText;
@@ -43,17 +43,15 @@ void CheckScrolls()
         if (isW4Unlocked && collectedCount >= totalScrollsNeeded)
         {
             world4Button.interactable = true;
-            scrollCountText.color = Color.green; // Keeps it green when you win!
+            scrollCountText.color = Color.green; 
         }
         else
         {
             world4Button.interactable = false;
-            // CHANGE THIS LINE:
             scrollCountText.color = Color.white; 
         }
     }
 
-    // Call this when the button is clicked (add to OnClick event)
     public void TryEnterWorld4()
     {
         SceneManager.LoadScene(world4SceneName);
